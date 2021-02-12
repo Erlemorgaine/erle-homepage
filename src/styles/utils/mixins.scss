@@ -1,0 +1,19 @@
+// Inspiration from here: https://codepen.io/keithclark/pen/ZjrwpW
+@mixin blobs($count) {
+  $text-shadow: ();
+
+  @for $i from 0 through $count {
+    // todo: magic numbers in variables
+
+    $text-shadow: $text-shadow,
+      (-0.5 + (random()) * 3) +
+        em
+        (-0.5 + (random()) * 3) +
+        em
+        7px
+        // todo: tweak to satisfaction
+      hsla(random() * 360, 100%, 50%, 0.9);
+  }
+
+  text-shadow: $text-shadow;
+}
