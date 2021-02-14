@@ -1,14 +1,14 @@
 import React from "react";
-import { HomePageBackground } from "./HomePageStyle";
+import { StyledHomePage } from "./StyledHomePage";
 import erleImg from "../../assets/erle_pic.jpeg";
-import Signature from "../../assets/erle_logo";
+import Signature from "../Signature";
 
 
 // todo: blobs necessary?
 // todo make image its own component
 // todo different img sizes for different screens
 function HomePage () {
-    return <HomePageBackground>
+    return <StyledHomePage>
         <div className="home-page">
             <div className="blobs"></div>
             <div className="home-page__content">
@@ -30,7 +30,7 @@ function HomePage () {
                 </div>
             </div>
         </div>
-    </HomePageBackground>;
+    </StyledHomePage>;
 }
 
 export default HomePage;
