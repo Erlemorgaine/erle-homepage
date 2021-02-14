@@ -13,14 +13,14 @@ html {
 
 .heading {
     &--large {
-        @include heading($text-xl);
+        @include heading(var(--text-xl));
     }
 
     &--medium {
-        @include heading($text-l);
+        @include heading(var(--text-l));
     }
 
     &--small {
-        @include heading($text-m);
+        @include heading(var(--text-m));
     }
 }

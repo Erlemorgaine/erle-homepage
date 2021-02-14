@@ -1,4 +1,20 @@
-$text-xl: 2rem;
-$text-l: 1.5rem;
-$text-m: 1rem;
-$text-s: .8rem;
+:root {
+    // BASIC COLORS
+    --white: #fff;
+    --dark: #1a1a1a;
+    --transparent: rgba(0, 0, 0, 0);
+
+    // THEME COLORS
+    // On Fire
+    --color-primary: #002f45;
+    --color-primary--light: #1a97d1;
+    --color-primary--lighter: #6bb8db;
+    --color-secondary: #ff3c00;
+    --color-secondary-light: #f8d77b;
+
+    // FONT STYLES
+    --text-xl: 2rem;
+    --text-l: 1.5rem;
+    --text-m: 1rem;
+    --text-s: .8rem;
+}

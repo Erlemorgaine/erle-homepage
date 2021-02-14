@@ -4,11 +4,10 @@ const blobs = (count: number) => {
     let textShadow: string = "";
 
     const rnd = (n: number) => Math.random() * n;
+    const offset = () => `${(-.5 + rnd(10))}rem`;
 
     for (let n = 1; n < count; n++) {
-        textShadow += `${(-.5 + rnd(10))}rem
-        ${(-.5 + rnd(10))}rem
-        7px
+        textShadow += `${offset()} ${offset()} 7px
         hsla(${rnd(50)}, 100%, 50%, 1)${n === count - 1 ? '' : ', '}`;
     };
 
@@ -23,24 +22,24 @@ const animatedBlobs = (blobAmount: number, duration: number, delay: number) => `
 
 const float = keyframes`
     from { 
-        transform: scale(15) translate(-20px) rotate(0deg);
+        transform: scale(15) translateX(-20px) translateY(-50px) rotate(0deg);
     }
     to {
-        transform: scale(25) translate(20px) rotate(360deg);
+        transform: scale(25) translateX(20px) translateY(50px) rotate(360deg);
     }
 `;
 
 const slideFromRight = keyframes`
     0% { 
         transform: translatex(-100%);
-        color: rgba(0, 0, 0, 0);
+        color: var(--transparent);
     }
     20% {
-        color: rgba(0, 0, 0, 0);
+        color: var(--transparent);
     }
     100% {
         transform: translatex(0);
-        color: white;
+        color: var(--white);
     }
 `;
 
@@ -61,17 +60,21 @@ const drawStroke = keyframes`
     }
 `;
 
-export const HomePageBackground = styled.main`
-    background: linear-gradient(#f8d77b, #ff3c00);
+export const HomePageBackground = styled.main.attrs((props) => ({
+    blobAmount: 50,
+    blobDuration: 50
+}))`
+    background: linear-gradient(var(--color-secondary-light), var(--color-secondary));
 
     .home-page, .blobs {
-        z-index: -2;
+        --blob-duration: 50;
+        --blob-amount: 50;
 
         &::before, &::after {
             content: '.';
             font-size: 3.5rem;
             color: transparent;
-            position: fixed;
+            position: absolute;
             top: 30%;
             left: 40%;
             width: 3rem;
@@ -87,64 +90,64 @@ export const HomePageBackground = styled.main`
 
         height: 100vh;
         padding: 3rem var(--home-padding);
+        position: relative;
+        overflow: hidden;
 
         &::before {
-            ${animatedBlobs(50, 53, -42)}
+            ${(props) => animatedBlobs(props.blobAmount, props.blobDuration + 3, -(props.blobDuration / 5 * 4))}
         }
 
         &::after {
-            ${animatedBlobs(50, 52, -33)}
+            ${(props) => animatedBlobs(props.blobAmount, props.blobDuration + 2, -(props.blobDuration / 5 * 3))}
         }
 
         &__content {
             display: flex;
             justify-content: space-between;
-        }
 
-        &__intro-image {
-            width: fit-content;
-
-            &__top-banner {
-                background-color: #002f45;
-                padding: 1rem;
-                padding-left: var(--home-padding);
-                margin-left: calc(var(--home-padding) * -1);
-                border-radius: 0 10px 10px 0;
+            &__intro {
                 width: fit-content;
-                position: absolute;
-                bottom: 0;
-                z-index: 3;
-                animation: ${slideFromRight} 1s .5s both;
 
-                span:first-child {
-                    font-family: 'Assistant', sans-serif;
-                    color: #f8d77b;
-                    font-weight: bold;
-                    font-size: rem;
-                }
-            }
+                &__banner {
+                    background-color: var(--color-primary);
+                    padding: 1rem;
+                    padding-left: var(--home-padding);
+                    margin-left: calc(var(--home-padding) * -1);
+                    border-radius: 0 10px 10px 0;
+                    width: fit-content;
+                    position: absolute;
+                    bottom: 5rem;
+                    color: var(--white);
+                    animation: ${slideFromRight} 1s .5s both;
 
-            &__image {
-                border-radius: 50%;
-                overflow: hidden;
-                width: fit-content;
-                animation: ${showImage} 2s forwards;
-
-                img {
-                    width: 20rem;
-                    position: relative;
-                    z-index: 2;
-                    filter: brightness(1.3) saturate(1.5);
-                    mix-blend-mode: luminosity;
-                    transition: all .3s;
-
-                    &:hover {
-                        filter: blur(3px);
-                        mix-blend-mode: luminosity;
-                        opacity: .5;
+                    span:first-child {
+                        font-family: 'Assistant', sans-serif;
+                        color: var(--color-secondary-light);
+                        font-weight: bold;
+                        font-size: rem;
                     }
                 }
-            }            
+
+                &__image {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    width: fit-content;
+                    animation: ${showImage} 2s forwards;
+
+                    img {
+                        width: 20rem;
+                        filter: brightness(1.3) saturate(1.5);
+                        mix-blend-mode: luminosity;
+                        transition: all .3s;
+
+                        &:hover {
+                            filter: blur(3px);
+                            mix-blend-mode: luminosity;
+                            opacity: .5;
+                        }
+                    }
+                }  
+            }          
         }
     }
 
@@ -154,19 +157,19 @@ export const HomePageBackground = styled.main`
         }
 
         &::before {
-            ${animatedBlobs(50, 51, -21)}
+            ${(props) => animatedBlobs(props.blobAmount, props.blobDuration + 1, -(props.blobDuration / 5 * 2))}
         }
 
         &::after {
-            ${animatedBlobs(50, 50, -11)}
+            ${(props) => animatedBlobs(props.blobAmount, props.blobDuration, -(props.blobDuration / 5))}
         }
     }
 
     svg {
-        filter: drop-shadow(1px 1px 1px #1a97d1)
-            drop-shadow(1px 1px 1px #6bb8db)
-            drop-shadow(1px 1px 1px #ffffff)
-            drop-shadow(1px 1px 2px #ffffff);
+        filter: drop-shadow(1px 1px 1px var(--color-primary--light))
+            drop-shadow(1px 1px 1px var(--color-primary--lighter))
+            drop-shadow(1px 1px 1px var(--white))
+            drop-shadow(1px 1px 2px var(--white));
         position: absolute;
         z-index: 3;
 
@@ -176,7 +179,7 @@ export const HomePageBackground = styled.main`
             stroke-dasharray: 1050;
             stroke-dashoffset: 1050;
             animation: ${drawStroke} 5s 1.5s forwards;
-            stroke: #002f45;
+            stroke: var(--color-primary);
 
             &.tail {
                 animation: ${drawStroke} 3s 3s forwards;

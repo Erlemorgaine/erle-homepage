@@ -12,12 +12,12 @@ function HomePage () {
         <div className="home-page">
             <div className="blobs"></div>
             <div className="home-page__content">
-                <div className="home-page__intro-image">
+                <div className="home-page__content__intro">
                     <Signature/>
-                    <div className="home-page__intro-image__image">
+                    <div className="home-page__content__intro__image">
                         <img src={erleImg} alt="image of Erle"/>
                     </div>
-                    <div className="home-page__intro-image__top-banner heading--medium">
+                    <div className="home-page__content__intro__banner heading--medium">
                         Front end development is <span>awesome</span> <span>...</span>
                     </div>
                 </div>
