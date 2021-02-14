@@ -1,2 +1,9 @@
+@import "../styles/base/typography.scss";
 @import "../styles/utils/mixins.scss";
-@import "../styles/utils/variables.scss";
+
+// todo: reset file
+
+body {
+    padding: 0;
+    margin: 0;
+}

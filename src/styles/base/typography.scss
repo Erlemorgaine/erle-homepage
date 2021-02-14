@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;400;700&family=Indie+Flower&family=Jomhuria&display=swap');
+
+@import "../utils/variables.scss";
+
+html {
+    font-family: 'Assistant', Helvetica, sans-serif;
+}
+
+@mixin heading($size) {
+    font-size: $size;
+    font-family: 'Indie Flower', sans-serif;
+}
+
+.heading {
+    &--large {
+        @include heading($text-xl);
+    }
+
+    &--medium {
+        @include heading($text-l);
+    }
+
+    &--small {
+        @include heading($text-m);
+    }
+}
