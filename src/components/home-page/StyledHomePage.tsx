@@ -32,14 +32,9 @@ const float = keyframes`
 const slideFromRight = keyframes`
     0% { 
         transform: translatex(-100%);
-        color: var(--transparent);
-    }
-    20% {
-        color: var(--transparent);
     }
     100% {
         transform: translatex(0);
-        color: var(--white);
     }
 `;
 
@@ -80,7 +75,7 @@ export const StyledHomePage = styled.main.attrs((props) => ({
         --home-padding: 5rem;
 
         height: 100vh;
-        padding: 3rem var(--home-padding);
+        padding: var(--home-padding);
         position: relative;
         overflow: hidden;
 
@@ -98,6 +93,7 @@ export const StyledHomePage = styled.main.attrs((props) => ({
 
             &__intro {
                 width: fit-content;
+                position: relative;
 
                 &__banner {
                     background-color: var(--color-primary);
@@ -105,9 +101,9 @@ export const StyledHomePage = styled.main.attrs((props) => ({
                     padding-left: var(--home-padding);
                     margin-left: calc(var(--home-padding) * -1);
                     border-radius: 0 10px 10px 0;
-                    width: fit-content;
+                    width: max-content;
                     position: absolute;
-                    bottom: 5rem;
+                    bottom: 0;
                     color: var(--white);
                     animation: ${slideFromRight} 1s .5s both;
 
@@ -115,7 +111,6 @@ export const StyledHomePage = styled.main.attrs((props) => ({
                         font-family: 'Assistant', sans-serif;
                         color: var(--color-secondary-light);
                         font-weight: bold;
-                        font-size: rem;
                     }
                 }
 

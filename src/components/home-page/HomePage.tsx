@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledHomePage } from "./StyledHomePage";
-import erleImg from "../../assets/erle_pic.jpeg";
+import erleImg from "../../assets/erle_pic.png";
 import Signature from "../Signature";
 
 

@@ -1,8 +1,6 @@
 import React from "react";
 import { StyledSignature } from "./StyledSignature";
 
-// todo: CSS for animation in separate styled component
-
 function Signature() {
     return <StyledSignature width="34.22mm" height="31.18mm" version="1.1" viewBox="0 0 34.22 31.18" xmlns="http://www.w3.org/2000/svg">
  <g transform="translate(-6.873 -25.35) scale(0.25)">
